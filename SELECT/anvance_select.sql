@@ -13,6 +13,7 @@ FROM  TRIANGLES;
 
 
 
+-- https://www.hackerrank.com/challenges/the-pads/problem
 (SELECT CONCAT(NAME, 
 			   '(' ,
 			   SUBSTRING(OCCUPATION, 1, 1),
@@ -29,3 +30,15 @@ FROM OCCUPATIONS
 GROUP BY OCCUPATION 
 ORDER BY COUNT(OCCUPATION) ASC, 
 			OCCUPATION ASC );
+
+
+
+-- https://www.hackerrank.com/challenges/binary-search-tree-1/problem
+select t1.N ,
+    case 
+        when t1.P is null then 'Root'
+        when t1.N in (select distinct(P) from BST where P is not null) then 'Inner'
+        else 'Leaf'
+    end
+from BST as t1
+order  by N
